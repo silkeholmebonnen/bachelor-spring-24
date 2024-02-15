@@ -1,0 +1,19 @@
+fn = FlowNetwork()
+fn.addVertex('s', True, False)
+fn.addVertex('t', False, True)
+fn.addVertex('a', False, False) 
+fn.addVertex('b', False, False) 
+fn.addVertex('c', False, False) 
+fn.addVertex('d', False, False) 
+fn.addEdge('s', 'a', 4)
+fn.addEdge('a', 'b', 4)
+fn.addEdge('b', 't', 2)
+fn.addEdge('s', 'c', 3)
+fn.addEdge('c', 'd', 6)
+fn.addEdge('d', 't', 6)
+fn.addEdge('b', 'c', 3)
+
+[vertex.name for vertex in fn.vertices]
+['%s -> %s' % (e._from, e.to) for e in fn.getEdges()]
+
+fn.calculateMaxFlow()
