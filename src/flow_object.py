@@ -28,10 +28,10 @@ class FlowPolygon(VMobject):
             obj.set_stroke(borderBlue, opacity=1.0)
 
             # set color of every other object to differ
-            if len(self.polygons) % 3 == 0:
-                obj.set_fill(darkBlue, 0.8)
-            else:
-                obj.set_fill(lightBlue, 0.8)
+            # if len(self.polygons) % 3 == 0:
+            #    obj.set_fill(darkBlue, 0.8)
+            # else:
+            obj.set_fill(lightBlue, 0.8)
             self.polygons.add(obj)
 
         # set buff to -1.0 if polygons should touch eachother
@@ -62,6 +62,7 @@ class FlowPolygon(VMobject):
 
 class PolygonExample(Scene):
     def construct(self):
+        self.camera.background_color = WHITE
         test = FlowPolygon(9)
         self.add(test)
 
@@ -70,3 +71,86 @@ class PolygonExample(Scene):
 
         self.play(Create(d), run_time=20)
         self.wait(2)
+
+
+class PolygonExample2(Scene):
+    def construct(self):
+        self.camera.background_color = WHITE
+        test = FlowPolygon(9)
+
+        turn_animation_into_updater(
+            ApplyWave(
+                test,
+                direction=RIGHT,
+                time_width=1,
+                amplitude=0.3,
+                run_time=2,
+            ),
+            cycle=True,
+        )
+
+        test2 = FlowPolygon(9)
+        test2.shift(DOWN * 2)
+
+        turn_animation_into_updater(
+            ApplyWave(
+                test2,
+                direction=RIGHT,
+                time_width=1,
+                amplitude=0.3,
+                run_time=2,
+            ),
+            cycle=True,
+        )
+
+        self.add(test)
+        self.wait(1)
+        self.add(test2)
+        # self.play(Create(d), run_time=10)
+        self.wait(20)
+
+
+class PolygonExample3(Scene):
+    def construct(self):
+        self.camera.background_color = WHITE
+        test = Dot(color=GREEN)
+        l1 = Line(LEFT * 2, RIGHT * 2)
+
+        turn_animation_into_updater(
+            MoveAlongPath(test, l1, run_time=3, rate_func=linear),
+            cycle=True,
+        )
+
+        test2 = Dot(color=RED)
+
+        turn_animation_into_updater(
+            MoveAlongPath(test2, l1, run_time=3, rate_func=linear),
+            cycle=True,
+        )
+
+        test3 = Dot(color=BLUE)
+
+        turn_animation_into_updater(
+            MoveAlongPath(test3, l1, run_time=3, rate_func=linear),
+            cycle=True,
+        )
+
+        self.add(test)
+        self.wait(1)
+        self.add(test2)
+        self.wait(1)
+        self.add(test3)
+        self.wait(20)
+
+
+class WelcomeToManim(Scene):
+    def construct(self):
+        words = Text("Welcome to")
+        banner = ManimBanner().scale(0.5)
+        VGroup(words, banner).arrange(DOWN)
+
+        turn_animation_into_updater(Write(words, run_time=0.9))
+        self.add(words)
+        d = Dot()
+        self.play(Create(d))
+        self.wait(5)
