@@ -2,7 +2,7 @@ from manim import *
 
 
 class Vertex(VMobject):
-    def __init__(self, id, x_coord, y_coord, max_capacity, **kwargs):
+    def __init__(self, id, x_coord, y_coord, max_capacity):
         self.id = id
         self.x_coord = x_coord
         self.y_coord = y_coord
@@ -12,7 +12,7 @@ class Vertex(VMobject):
 
         super().__init__()
 
-    def draw(self):
+    def draw(self, scale=1):
         foregroundDot = (
             Dot(self.to_np_array())
             .scale(self.max_capacity)
@@ -32,7 +32,7 @@ class Vertex(VMobject):
         self.add(backgroundDot)
 
         label = Tex(self.id, color=BLACK).set_x(self.x_coord).set_y(self.y_coord)
-        label.set_z_index(20).scale(0.8)
+        label.set_z_index(20).scale(scale / 4)
         self.add(label)
 
     def to_np_array(self):

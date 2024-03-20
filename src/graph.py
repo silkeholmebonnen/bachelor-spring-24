@@ -4,14 +4,14 @@ from src.vertex import Vertex
 
 
 class FlowGraph(VMobject):
-    def __init__(self, vertices, edges):
+    def __init__(self, vertices: list[Vertex], edges: list[Edge], scale=1):
         super().__init__()
         self.vertices = vertices
         self.edges = edges
 
         for vertex in vertices:
             self.add(vertex)
-            vertex.draw()
+            vertex.draw(scale)
 
         for edge in edges:
             self.add(edge)
