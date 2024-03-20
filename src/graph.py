@@ -15,6 +15,7 @@ class FlowGraph(VMobject):
 
         for edge in edges:
             self.add(edge)
+            edge.draw()
 
 
 class Ex(Scene):

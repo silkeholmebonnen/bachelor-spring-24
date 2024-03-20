@@ -1,7 +1,7 @@
 from manim import *
 
 
-class Vertex(Dot):
+class Vertex(VMobject):
     def __init__(self, id, x_coord, y_coord, max_capacity, **kwargs):
         self.id = id
         self.x_coord = x_coord
@@ -10,8 +10,7 @@ class Vertex(Dot):
         self.opacity = 0
         self.current_flow = 0
 
-        super().__init__(point=self.to_np_array(), color=BLACK, z_index=0, **kwargs)
-        # super().scale(max_capacity + 0.2)
+        super().__init__()
 
     def draw(self):
         foregroundDot = (

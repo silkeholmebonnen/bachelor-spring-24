@@ -4,10 +4,12 @@ from src.edge import Edge
 
 
 def getGraphAsMobjects(vertices, edges, capacities, layout_scale=2, layout="spring"):
-    # vertices, edges, capacities = graphData
-    d = {"k": 2, "iterations": 10000, "seed": 15}
     graph = Graph(
-        vertices, edges, layout_scale=layout_scale, layout=layout, layout_config=d
+        vertices,
+        edges,
+        layout_scale=layout_scale,
+        layout=layout,
+        layout_config={"seed": 100},
     )
 
     verticesAsObjects = {}
