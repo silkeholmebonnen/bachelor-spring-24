@@ -5,15 +5,18 @@ from src.edge import Edge
 
 def getGraphAsMobjects(vertices, edges, capacities, layout_scale=2, layout="spring"):
     # vertices, edges, capacities = graphData
-    graph = Graph(vertices, edges, layout_scale=layout_scale, layout=layout)
+    d = {"k": 2, "iterations": 10000, "seed": 15}
+    graph = Graph(
+        vertices, edges, layout_scale=layout_scale, layout=layout, layout_config=d
+    )
 
     verticesAsObjects = {}
     edgesAsObjects = []
 
     for dot, i in enumerate(graph.vertices):
         x, y, _ = graph._layout[dot]
-
-        vertex = Vertex(i, x, y, 1)
+        print(x, y)
+        vertex = Vertex(str(i), x, y, 1)
         verticesAsObjects.update({i: vertex})
 
     for _from, to, capacity in capacities:

@@ -33,7 +33,7 @@ class Vertex(Dot):
         self.add(backgroundDot)
 
         label = Tex(self.id, color=BLACK).set_x(self.x_coord).set_y(self.y_coord)
-        label.set_z_index(20)
+        label.set_z_index(20).scale(0.8)
         self.add(label)
 
     def to_np_array(self):
