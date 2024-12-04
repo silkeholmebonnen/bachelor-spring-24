@@ -45,6 +45,8 @@ class ThoresExampleDFS(Scene):
             source=source,
             sink=sink,
             layout_scale=scale,
+            scene=self,
+            theme=Themes.Dark,
         )
 
         self.camera.frame_width = 3.5 * scale
@@ -70,6 +72,8 @@ class ThoresExampleBFS(Scene):
             source=source,
             sink=sink,
             layout_scale=scale,
+            scene=self,
+            theme=Themes.Dark,
         )
 
         self.camera.frame_width = 3.5 * scale
@@ -111,6 +115,8 @@ class BigGraph(Scene):
             source=source,
             sink=sink,
             layout_scale=scale,
+            scene=self,
+            theme=Themes.Dark,
         )
 
         self.camera.frame_width = scale * 3.5
@@ -132,6 +138,8 @@ class SimpleGraph(Scene):
             growth_scale=GrowthScale.LINEAR,
             source=source,
             sink=sink,
+            scene=self,
+            theme=Themes.Dark,
         )
 
         self.add(graph)
@@ -155,6 +163,8 @@ class WikiExample(Scene):
             source=source,
             sink=sink,
             layout_scale=scale,
+            scene=self,
+            theme=Themes.Dark,
         )
 
         self.camera.frame_width = 4.5 * scale
